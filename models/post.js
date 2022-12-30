@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-console.log("I am post schema")
+console.log("I am post")
 
 const postSchema = new mongoose.Schema({
     content: {
@@ -11,7 +11,13 @@ const postSchema = new mongoose.Schema({
         type:  mongoose.Schema.Types.ObjectId,
         ref: 'User'
 
-    }
+    },
+    comments:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref: "Comment"
+        }
+    ]
 },{
     timestamps: true
 });

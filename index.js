@@ -64,7 +64,7 @@ app.use(passport.setAuthenticatedUSer)
 app.get("/" , require("./routes/index"))
 app.use("/user" , require("./routes/user"))
 app.use("/posts" , require("./routes/posts"))
-
+app.use('/comments', require('./routes/comments'));
 
 app.listen(port, function(err){
     if(err){
