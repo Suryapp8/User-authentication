@@ -1,18 +1,18 @@
 <html>
     <body>
-        <h1>I am a header</h1>
-        <ul>
+        <h1>Facegram</h1>
+        <ul >
             <% if (locals.user) {%>
-            <li><%=user.name %></li>
-            <li>
+            <li class="user"><%=user.name %></li>
+            <li class="user">
                 <a href="/user/signOut">Sign Out</a>
             </li>
 
             <% }else{ %>
-                <li>
+                <li class="user">
                     <a href="/user/signIn" >Sign In</a>
                 </li>
-                <li>
+                <li class="user">
                     <a href="/user/signUp" >Sign Up</a>
                 </li>
 

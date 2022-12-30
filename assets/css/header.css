@@ -1,0 +1,16 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #052836;
+  padding-left: 10px;
+  color: white;
+  height: 50px; }
+  .navbar li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    text-transform: capitalize; }
+    .navbar li a {
+      text-decoration: none;
+      color: white; }

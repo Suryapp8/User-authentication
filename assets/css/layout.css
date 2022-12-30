@@ -1,2 +1,5 @@
-body {
-  background-color: grey; }
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: skyblue; }

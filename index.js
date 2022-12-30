@@ -12,10 +12,12 @@ const MongoStore = require("connect-mongo")(session)
 const sassMiddleware = require("node-sass-middleware")
 //extract style and script from sub pages
 
+
+
 app.use(sassMiddleware({
     src: "./assets/scss",
     dest: "./assets/css",
-    debug: true,
+    // debug: true,
     outputStyle : "extended",
     prefix: "/css"
 }))
@@ -61,6 +63,7 @@ app.use(passport.setAuthenticatedUSer)
 
 app.get("/" , require("./routes/index"))
 app.use("/user" , require("./routes/user"))
+app.use("/posts" , require("./routes/posts"))
 
 
 app.listen(port, function(err){
