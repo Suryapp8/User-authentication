@@ -9,7 +9,7 @@ const session = require("express-session")
 const passport = require("passport")
 const passportJWT = require("./config/passport-jwt-strategy")
 const passportLocal = require("./config/passpot-strategy")
-const MongoStore = require("connect-mongo")(session)
+
 const sassMiddleware = require("node-sass-middleware")
 const flash = require("connect-flash")
 const customMiddleware = require("./config/middleware")
@@ -20,21 +20,20 @@ chatServer.listen(5000);
 var cors = require('cors');
 app.use(cors())
 console.log("chat server is on port 5000")
-const env = require("./config/environment")
-const path = require("path")
+
 //extract style and script from sub pages
 
 
 
 app.use(sassMiddleware({
-    src: path.join(__dirname, env.asset_path, "scss"),
+    src: "./assets/scss",
     dest: "./assets/css",
     // debug: true,
     outputStyle : "extended",
     prefix: "/css"
 }))
 
-app.use(express.static("env.asset_path"))
+app.use(express.static("./assets"))
 app.set("layout extractStyles" , true)
 app.set("layout extractScripts" , true)
 
@@ -58,16 +57,8 @@ app.use(session({
     resave: false,
     cookie: {
         maxAge: (1000*60*100)
-    },
-    store: new MongoStore(
-        {
-            mongooseConnection: db,
-            autoRemove: "disabled"
-        },
-        function(err){
-            console.log(err || "connect mongo setup")
-        }
-    )
+    }
+
 }))
 
 app.use(passport.initialize());
@@ -83,7 +74,7 @@ app.use("/posts" , require("./routes/posts"))
 app.use('/comments', require('./routes/comments'));
 app.use("/api" , require("./routes/api"))
 app.use("/api" , require("./routes/api"))
-app.use('/likes', require('./routes/likes'));
+// app.use('/likes', require('./routes/likes'));
 
 app.listen(port, function(err){
     if(err){
